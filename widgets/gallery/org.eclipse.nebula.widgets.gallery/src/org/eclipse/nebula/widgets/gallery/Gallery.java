@@ -96,6 +96,11 @@ import org.eclipse.swt.widgets.ScrollBar;
 public class Gallery extends Canvas {
 
 	private static final String BUG_PLATFORM_LINUX_GTK_174932 = "gtk"; //$NON-NLS-1$
+	
+	/**
+	 * Size of the red box drawn in the center of the widget.
+	 */
+	private static final int RED_BOX_SIZE = 50;
 
 	/**
 	 * Used to enable debug logging in the Gallery widget.
@@ -1195,13 +1200,12 @@ public class Gallery extends Canvas {
 			
 			// Draw red box in center of widget
 			Point size = getSize();
-			int boxSize = 50;
-			int centerX = (size.x - boxSize) / 2;
-			int centerY = (size.y - boxSize) / 2;
+			int centerX = (size.x - RED_BOX_SIZE) / 2;
+			int centerY = (size.y - RED_BOX_SIZE) / 2;
 			
 			Color red = new Color(getDisplay(), 255, 0, 0);
 			gc.setBackground(red);
-			gc.fillRectangle(centerX, centerY, boxSize, boxSize);
+			gc.fillRectangle(centerX, centerY, RED_BOX_SIZE, RED_BOX_SIZE);
 			red.dispose();
 			
 		} catch (Exception e) {
