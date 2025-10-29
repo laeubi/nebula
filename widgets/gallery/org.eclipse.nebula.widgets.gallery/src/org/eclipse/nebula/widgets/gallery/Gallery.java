@@ -1192,6 +1192,18 @@ public class Gallery extends Canvas {
 				if (itemRenderer != null)
 					itemRenderer.postDraw(gc);
 			}
+			
+			// Draw red box in center of widget
+			Point size = getSize();
+			int boxSize = 50;
+			int centerX = (size.x - boxSize) / 2;
+			int centerY = (size.y - boxSize) / 2;
+			
+			Color red = new Color(getDisplay(), 255, 0, 0);
+			gc.setBackground(red);
+			gc.fillRectangle(centerX, centerY, boxSize, boxSize);
+			red.dispose();
+			
 		} catch (Exception e) {
 			// We can't let onPaint throw an exception because unexpected
 			// results may occur in SWT.
