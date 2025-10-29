@@ -49,12 +49,15 @@ public class ScreenshotHelper {
             // Process pending events
         }
         
-        // Create an image of the shell's size
-        Image image = new Image(display, shell.getBounds());
+        // Get the shell's client area size
+        org.eclipse.swt.graphics.Rectangle bounds = shell.getClientArea();
         
-        // Create a GC to draw the shell onto the image
-        GC gc = new GC(shell);
-        gc.copyArea(image, 0, 0);
+        // Create an image with the shell's size
+        Image image = new Image(display, bounds.width, bounds.height);
+        
+        // Create a GC for the image and print the shell onto it
+        GC gc = new GC(image);
+        shell.print(gc);
         gc.dispose();
         
         // Save the image as PNG
