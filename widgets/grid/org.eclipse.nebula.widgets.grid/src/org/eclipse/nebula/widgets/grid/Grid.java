@@ -454,8 +454,9 @@ public class Grid extends Canvas {
 	private int resizingColumnStartWidth = 0;
 
 	/**
-	 * True if we're resizing the column to the right of a FILL column (inverted resize).
-	 * In this case, dragging right makes the column smaller, not larger.
+	 * True if we're resizing the column to the right of a FILL column when dragging
+	 * the FILL column's right edge (inverted resize). In this case, dragging right
+	 * makes the column smaller, not larger.
 	 */
 	private boolean resizingInverted = false;
 
