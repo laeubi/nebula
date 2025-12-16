@@ -5026,7 +5026,8 @@ public class Grid extends Canvas {
 
 			x2 -= getHScrollSelectionInPixels();
 			int extraFill = getExtraFill();
-			for (final GridColumn column : displayOrderedColumns) {
+			for (int i = 0; i < displayOrderedColumns.size(); i++) {
+				final GridColumn column = displayOrderedColumns.get(i);
 				if (!column.isVisible()) {
 					continue;
 				}
@@ -5043,6 +5044,22 @@ public class Grid extends Canvas {
 
 						over = true;
 						columnBeingResized = column;
+						
+						// If this column has FILL style, we should resize the next column instead
+						if (column.isFill()) {
+							// Find the next visible column
+							GridColumn nextColumn = null;
+							for (int j = i + 1; j < displayOrderedColumns.size(); j++) {
+								final GridColumn candidate = displayOrderedColumns.get(j);
+								if (candidate.isVisible() && candidate.getResizeable()) {
+									nextColumn = candidate;
+									break;
+								}
+							}
+							if (nextColumn != null) {
+								columnBeingResized = nextColumn;
+							}
+						}
 					}
 					break;
 				}
