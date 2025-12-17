@@ -329,7 +329,7 @@ public class GridColumnGroup extends Item
             Point[] selection = getParent().getCellSelection();
             for (int i = 0; i < selection.length; i++)
             {
-                if (collapsedCols.contains(new Integer(selection[i].x)))
+                if (collapsedCols.contains(Integer.valueOf(selection[i].x)))
                 {
                     getParent().deselectCell(selection[i]);
                 }

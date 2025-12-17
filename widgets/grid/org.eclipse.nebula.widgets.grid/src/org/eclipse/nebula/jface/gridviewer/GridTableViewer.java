@@ -587,7 +587,7 @@ public class GridTableViewer extends AbstractTableViewer {
                 indiceLists.add(indiceList);
                 objectList.add(grid.getItem(curLine).getData());
             }
-            indiceList.add(new Integer(ps[i].x));
+            indiceList.add(Integer.valueOf(ps[i].x));
         }
 
         Object focusElement = null;

@@ -219,6 +219,7 @@ public class GridTreeViewer extends AbstractTreeViewer {
 	}
 	
 	/** {@inheritDoc} */
+	@SuppressWarnings("deprecation")
 	protected void removeAll(Control control) {
 		((Grid) control).removeAll();
 	}
@@ -229,6 +230,7 @@ public class GridTreeViewer extends AbstractTreeViewer {
 	}
 	
 	/** {@inheritDoc} */
+	@SuppressWarnings("rawtypes")
 	protected void setSelection(List items) {
 		Item[] current = getSelection(getGrid());
 
@@ -238,7 +240,8 @@ public class GridTreeViewer extends AbstractTreeViewer {
 		}
 
 		GridItem[] newItems = new GridItem[items.size()];
-		items.toArray(newItems);
+		@SuppressWarnings("unchecked")
+		Object[] itemArray = items.toArray(newItems);
 		getGrid().setSelection(newItems);
 		getGrid().showSelection();
 	}
@@ -307,6 +310,8 @@ public class GridTreeViewer extends AbstractTreeViewer {
 	 * When this method is called, existing rows are not resized to their 
 	 * preferred height.  Therefore it is suggested that this method be called
 	 * before rows are populated (i.e. before setInput).
+	 * 
+	 * @param autoPreferredHeight true to enable automatic preferred height, false otherwise
 	 */
 	public void setAutoPreferredHeight(boolean autoPreferredHeight) {
 		this.autoPreferredHeight = autoPreferredHeight;
@@ -336,6 +341,7 @@ public class GridTreeViewer extends AbstractTreeViewer {
 	 * @param index child index
 	 * @since 3.3
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void remove(final Object parentOrTreePath, final int index) {
 		if (checkBusy())
 			return;
@@ -372,7 +378,8 @@ public class GridTreeViewer extends AbstractTreeViewer {
 				}
 				if (removedPath != null) {
 					boolean removed = false;
-					for (Iterator it = oldSelection.iterator(); it
+					for (@SuppressWarnings("rawtypes")
+					Iterator it = oldSelection.iterator(); it
 							.hasNext();) {
 						TreePath path = (TreePath) it.next();
 						if (path.startsWith(removedPath, getComparer())) {
@@ -381,10 +388,12 @@ public class GridTreeViewer extends AbstractTreeViewer {
 						}
 					}
 					if (removed) {
-						setSelection(new TreeSelection(
-								(TreePath[]) oldSelection
+						@SuppressWarnings("unchecked")
+						TreePath[] paths = (TreePath[]) oldSelection
 										.toArray(new TreePath[oldSelection
-												.size()]), getComparer()),
+												.size()]);
+						setSelection(new TreeSelection(
+								paths, getComparer()),
 								false);
 					}
 
