@@ -12,10 +12,11 @@ public class SelectionWithFocusRow extends StructuredSelection {
 	private Object focusElement;
 
 	/**
-	 * FIXME
-	 * @param elements
-	 * @param focusElement
-	 * @param comparer
+	 * Creates a new selection with focus row.
+	 * 
+	 * @param elements the list of selected elements
+	 * @param focusElement the element that has focus
+	 * @param comparer the element comparer
 	 */
 	public SelectionWithFocusRow(List elements, Object focusElement, IElementComparer comparer) {
         super(elements,comparer);

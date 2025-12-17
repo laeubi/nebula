@@ -8745,7 +8745,7 @@ public class Grid extends Canvas {
 	/**
 	 * Selects all cells in the given column in the receiver.
 	 *
-	 * @param col
+	 * @param col the column to select
 	 *
 	 * @throws org.eclipse.swt.SWTException
 	 *             <ul>

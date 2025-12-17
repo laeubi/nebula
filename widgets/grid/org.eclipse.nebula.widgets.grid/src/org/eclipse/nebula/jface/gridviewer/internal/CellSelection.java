@@ -32,8 +32,9 @@ public class CellSelection extends SelectionWithFocusRow {
 	}
 	
 	/**
-	 * FIXME
-	 * @param element
+	 * Returns the list of indices for the given element.
+	 * 
+	 * @param element the element to get indices for
 	 * @return the indices
 	 */
 	public List getIndices(Object element) {
