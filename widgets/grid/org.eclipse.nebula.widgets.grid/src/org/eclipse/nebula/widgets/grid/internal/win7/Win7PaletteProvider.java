@@ -138,8 +138,10 @@ public class Win7PaletteProvider {
     }
 
     /**
-     * @param display
-     * @param type
+     * Initializes the palette for the given display and type.
+     * 
+     * @param display the display
+     * @param type the palette type
      */
     public void initializePalette(Display display, Integer type){
     	getPalette(display, type);
@@ -147,8 +149,8 @@ public class Win7PaletteProvider {
 
     /**
      * Utility method to create/pool a Color
-     * @param display
-     * @param type
+     * @param display the display
+     * @param type the palette type
      * @return Color
      */
     public Palette getPalette(Display display, Integer type){
@@ -174,9 +176,11 @@ public class Win7PaletteProvider {
 
 
     /**
-     * @param display
-     * @param type
-     * @param def
+     * Creates a palette from the given definition.
+     * 
+     * @param display the display
+     * @param type the palette type
+     * @param def the palette definition
      * @return Palette
      */
     protected Palette createPalette(Display display, Integer type, Object[] def){
@@ -203,8 +207,10 @@ public class Win7PaletteProvider {
     	private Color[] colors = {};
 
     	/**
-    	 * @param type
-    	 * @param colors
+    	 * Creates a new palette.
+    	 * 
+    	 * @param type the palette type
+    	 * @param colors the array of colors
     	 */
     	public Palette(Integer type, Color[] colors) {
     		this.type = type;

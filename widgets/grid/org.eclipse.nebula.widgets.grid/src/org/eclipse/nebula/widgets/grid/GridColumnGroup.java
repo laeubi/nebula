@@ -468,7 +468,7 @@ public class GridColumnGroup extends Item
 
     /**
      * Sets the Font to be used when displaying the Header text.
-     * @param font
+     * @param font the font to set for the header
      */
     public void setHeaderFont(Font font) {
     	checkWidget();
